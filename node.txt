@@ -7,7 +7,7 @@
   * fragment 节点(11)
 
 2. node.tagName 和 node.nodeType 区别?
-  node.tagName 只支持 node.nodeType 为 1 的元素节点.
+  node.tagName 只支持 node.nodeType 为 1 的元素节点;
 
 3. node.children和node.childNodes区别?
   node.children 只支持元素节点. 即 node.childElementCount === node.children.length. 而 node.childNodes 指向所有的子节点
@@ -111,6 +111,7 @@ http://forcefront.com/2013/custom-elements-defining-new-elements-in-html/
 http://www.toobug.net/article/shadow_dom_101.html
 http://www.toobug.net/article/shadow_dom_201.html
 http://www.toobug.net/article/shadow_dom_301.html
+
 
 
 

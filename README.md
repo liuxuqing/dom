@@ -10,6 +10,7 @@
 * node.hasAttribute( key )
 * node.getAttribute( key )
 * node.setAttribute( key, value )
+* node.removeAttribute( key )
 
 ## 子节点
 * node.children
@@ -41,7 +42,7 @@
 
 ### 节点检查和位置关系
 * node.contains( _node )
-* node.matches( selector )
+* node.matches( selector )/node.matchesSelector( selector )
 * node.isEqualNode( _node )
 * node.compareDocumentPosition( _node )
 
@@ -56,6 +57,8 @@
 * node.parentNode.insertBefore( _node, node )
 * node.parentNode.removeChild( node )
 * node.parentNode.replaceChild( _node, node )
+
+### 插入标记
 * node.insertAdjacentElement( position, _node )
 * node.insertAdjacentHTML( position, htmlstring )
 * node.insertAdjacentText( position, text )
@@ -65,8 +68,16 @@
 * node.outerText
 
 ## 文本节点
+* document.createTextNode( text )
+* textNode.nodeValue/textNode.data
+* textNode.appendData( text )
+* textNode.deleteData( offset, count )
+* textNode.insertData( offset, text )
+* textNode.replaceData( offset, count, text )
+* textNode.splitText( offset )
+* textNode.substringData( offset, count )
 * node.normalize()
-* textNode.splitText( offset );
+* node.length
 
 ## classList
 * node.classList
@@ -109,18 +120,25 @@
 document.registerElement( tag, prototype )
 
 
-## size
-* node.getClientRects()
-* node.getBoundingClientRect()
+## 滚动
 * element.scrollIntoView()
+* scrollIntoViewIfNeeded()
+* scrollByLines( lineCount )
+* scrollByPages( pageCount )
+
+## size
+* element.offsetHeight
+* element.offsetWidth -> (width+padding+border) -> include scrollbar
+* element.offsetTop 
+* element.offsetLeft -> 元素的左外边框至包含元素(offset.parent)的左内边框距离
 * element.clientHeight
-* element.clientWidth
+* element.clientWidth -> (width+padding) -> exclude scrollbar -> 可视区域尺寸
 * element.scrollHeight
-* element.scrollWidth
-* element.scrollLeft
+* element.scrollWidth -> 在没有滚动条情况下, 元素内容宽度 -> 内容实际尺寸
 * element.scrollTop
-* element.clientLeft
-* element.clientTop
+* element.scrollLeft -> 滚动位置
+* element.getBoundingClientRect() -> 返回相对于 viewport 四个方向值.
+* node.getClientRects()
 
 
 ## other
@@ -132,6 +150,17 @@ document.registerElement( tag, prototype )
 * node.prefix
 * node.localName -> 'svg:book'
 * node.baseURI
+* document.title
+* document.URL
+* document.domain
 * document.activeElement
+* document.hasFocus()
+* document.readyState -> loading/complete
+* document.head
+* document.charset
 * document.documentElement 只读, 获取任意文档的根元素
 * window.toStaticHTML( string )
+
+
+## TODO
+* range

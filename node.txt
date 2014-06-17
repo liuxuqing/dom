@@ -1,0 +1,130 @@
+1. node.nodeType 常见值?
+  * 元素节点(1)
+  * 属性节点(2)
+  * 文本节点(3)
+  * 注释节点(8)
+  * 文档节点(9)
+  * fragment 节点(11)
+
+2. node.tagName 和 node.nodeType 区别?
+  node.tagName 只支持 node.nodeType 为 1 的元素节点.
+
+3. node.children和node.childNodes区别?
+  node.children 只支持元素节点. 即 node.childElementCount === node.children.length. 而 node.childNodes 指向所有的子节点
+
+4. node.parentNode 和 node.parentElement 区别?
+5. node.compareDocumentPosition( _node ) 返回值?
+  * 0 相同元素
+  * 1 文档无关 - 两个节点不在相同文档
+  * 2 _node 在 node 之前
+  * 4 _node 在 node 之后
+  * 8 _node 包含 node 节点
+  * 16 node 包含 _node 节点
+  * 32 浏览器私有(?)
+6. insertAdjacentHTML/insertAdjacentText/insertAdjacentEleemnt 的 position 参数?
+  <!-- beforebegin -->
+  <p>
+  <!-- afterbegin -->
+  content!
+  <!-- beforeend -->
+  </p>
+  <!-- afterend -->
+
+7. node.innerText 和 node.textContent 区别?
+  node.innerText 不支持 `style` 和 `script` 标签.
+  node.innerText 不返回隐藏标签的内容.
+  node.innerText 会引起 reflow.
+
+8. .normalize 让文档正常化是指？
+  不存在空的文本节并且不存在多个连续的文本节点.
+
+9. css!
+  ```
+  var styles = document.styleSheets;
+  var rules = styles[0];
+  var rule = rules[0];
+  var selector = rule.selectText;
+  ```
+10. dispatch
+  ```
+  function dispatch( node, name, details ) {
+  var event = new CustomEvent( true, true, details );
+  node.dispatchEvent( event );
+  }
+  ```
+11. visibilitychange
+  ```
+  document.addEventListener( 'visibilitychange', function() {
+  console.log( document.visibilityState ); // visible/hidden
+  }, false );
+  ```
+
+12. MutationObserver
+  ```
+  var observer = new MutationObserver(function( records, self ) {
+    records.forEach(function( record ) {
+      record.type -> childList/attribute/characterData
+      record.target -> node
+      addNodes: nodeList
+      removeNodes: nodeList
+      previousSibling: null
+      nextSibling: null
+      attributeName: null
+      attributeNameSpace: null
+      oldValue: null
+    });
+  });
+
+  var config = {
+    childList: true,
+    attributes: true,
+    attributeFilter: [], // 只观察这些属性变化
+    attributeOldValue: '',
+    characterData: true,
+    characterDataOldValue: '',
+    subtree: true
+  };
+  observer.observe( target, config );
+  observer.disconnect();
+  ```
+13. xml
+  ```
+    var xml = new XMLSerializer();
+    var string = xml.serializeToString( node );
+    var parser = new DOMparser();
+    var node = parser.parseFromString( domstring, mimetype );
+  ```
+  mime-type:
+  * application/xml
+  * text/html
+  * image/svg+xml
+
+14. shadow dom
+```
+var element = document.registerElement( tag );
+// tag 要求, 必须存在 - 字符字. ex: x-tag.
+var element = document.registerElement( 'x-rt', {
+  prototype: Object.create( HTMLElement.prototype )
+});
+```
+http://forcefront.com/2013/custom-elements-defining-new-elements-in-html/
+http://www.toobug.net/article/shadow_dom_101.html
+http://www.toobug.net/article/shadow_dom_201.html
+http://www.toobug.net/article/shadow_dom_301.html
+
+
+
+
+
+参考:
+https://gist.github.com/wintercn/5925837
+http://www.w3help.org/zh-cn/
+https://developer.mozilla.org/zh-CN/docs/Web/API/Node
+https://developer.mozilla.org/zh-CN/docs/Web/API/element
+https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5
+
+
+
+
+
+

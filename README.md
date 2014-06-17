@@ -90,6 +90,8 @@
 ### event list
 * MutationObserver
 * visibilitychange
+* DOMContentLoaded
+* onpropertychange
 
 
 ## CSS
@@ -103,6 +105,23 @@
 * xmlSerializer
 * DOMparser
 
+## shadow dom
+document.registerElement( tag, prototype )
+
+
+## size
+* node.getClientRects()
+* node.getBoundingClientRect()
+* element.scrollIntoView()
+* element.clientHeight
+* element.clientWidth
+* element.scrollHeight
+* element.scrollWidth
+* element.scrollLeft
+* element.scrollTop
+* element.clientLeft
+* element.clientTop
+
 
 ## other
 * node.id
@@ -115,3 +134,4 @@
 * node.baseURI
 * document.activeElement
 * document.documentElement 只读, 获取任意文档的根元素
+* window.toStaticHTML( string )
